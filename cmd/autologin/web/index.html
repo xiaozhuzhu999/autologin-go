@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoLogin Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+    <!-- ============ 首页 ============ -->
+    <div id="view-home" class="view active">
+        <div class="hero-card">
+            <div class="hero-text">
+                <div class="hero-title">AutoLogin Pro</div>
+                <div class="hero-subtitle">多站点自动登录管理工具</div>
+            </div>
+            <div class="hero-actions">
+                <button class="btn-primary" onclick="openEditDialog()">+ 添加站点</button>
+                <button class="btn-ghost" onclick="quitApp()">退出</button>
+            </div>
+        </div>
+
+        <div class="section-title">我的站点</div>
+        <div id="site-grid" class="site-grid">
+            <!-- 站点卡片由 JS 动态生成 -->
+        </div>
+    </div>
+
+    <!-- ============ 登录进度页 ============ -->
+    <div id="view-login" class="view">
+        <div class="login-header">
+            <button class="btn-ghost" onclick="showView('home')">← 返回</button>
+            <div class="login-title" id="login-site-name">登录中</div>
+            <button class="btn-danger" id="cancel-login-btn" onclick="cancelLogin()">取消登录</button>
+        </div>
+
+        <div class="login-body">
+            <div class="steps-panel" id="steps-panel">
+                <!-- 步骤由 JS 动态生成 -->
+            </div>
+
+            <div class="log-panel">
+                <div class="log-header">实时日志</div>
+                <div class="log-content" id="log-content"></div>
+            </div>
+        </div>
+
+        <div class="login-result" id="login-result" style="display:none;">
+            <div class="result-icon" id="result-icon"></div>
+            <div class="result-text" id="result-text"></div>
+            <button class="btn-primary" onclick="showView('home')">返回首页</button>
+        </div>
+    </div>
+
+    <!-- ============ 站点编辑弹窗 ============ -->
+    <div id="edit-dialog" class="dialog-overlay" style="display:none;">
+        <div class="dialog">
+            <div class="dialog-header">
+                <div class="dialog-title" id="edit-dialog-title">添加站点</div>
+                <button class="dialog-close" onclick="closeEditDialog()">✕</button>
+            </div>
+
+            <div class="dialog-body">
+                <!-- 基础信息 -->
+                <div class="form-panel">
+                    <div class="panel-title">基础信息</div>
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label>站点名称</label>
+                            <input type="text" id="edit-name" placeholder="例如：阿里云云盾堡垒机">
+                        </div>
+                        <div class="form-field">
+                            <label>登录网址</label>
+                            <input type="text" id="edit-url" placeholder="https://example.com/login">
+                        </div>
+                        <div class="form-field">
+                            <label>账号</label>
+                            <input type="text" id="edit-username" placeholder="登录账号">
+                        </div>
+                        <div class="form-field">
+                            <label>密码</label>
+                            <input type="password" id="edit-password" placeholder="登录密码">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 登录能力 -->
+                <div class="form-panel">
+                    <div class="panel-title">登录能力</div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>动态口令</label>
+                            <select id="edit-otp-mode">
+                                <option value="none">无动态口令</option>
+                                <option value="manual">手动输入动态口令</option>
+                                <option value="totp">TOTP 自动生成</option>
+                                <option value="fixed">固定口令</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label>验证码</label>
+                            <select id="edit-captcha-mode">
+                                <option value="auto">自动识别</option>
+                                <option value="manual_input">手动输入</option>
+                                <option value="wait_manual">等待手动</option>
+                                <option value="none">无验证码</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="edit-vpn-enabled"> 需要 VPN 连接
+                        </label>
+                    </div>
+                    <div id="vpn-fields" style="display:none;">
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label>VPN 客户端路径</label>
+                                <input type="text" id="edit-vpn-exe" placeholder="C:\Program Files\VpnClient.exe">
+                            </div>
+                            <div class="form-field">
+                                <label>窗口标题</label>
+                                <input type="text" id="edit-vpn-title" placeholder="VPN客户端">
+                            </div>
+                            <div class="form-field">
+                                <label>等待连接(秒)</label>
+                                <input type="number" id="edit-vpn-wait" value="20" min="5" max="120">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 页面选择器 -->
+                <div class="form-panel">
+                    <div class="panel-title">页面选择器</div>
+                    <div class="form-field">
+                        <label>用户名输入框</label>
+                        <input type="text" id="edit-sel-username" class="selector-input">
+                    </div>
+                    <div class="form-field">
+                        <label>密码输入框</label>
+                        <input type="text" id="edit-sel-password" class="selector-input">
+                    </div>
+                    <div class="form-field">
+                        <label>动态口令输入框</label>
+                        <input type="text" id="edit-sel-otp" class="selector-input">
+                    </div>
+                    <div class="form-field">
+                        <label>验证码输入框</label>
+                        <input type="text" id="edit-sel-captcha" class="selector-input">
+                    </div>
+                    <div class="form-field">
+                        <label>验证码图片</label>
+                        <input type="text" id="edit-sel-captcha-img" class="selector-input">
+                    </div>
+                    <div class="form-field">
+                        <label>提交按钮</label>
+                        <input type="text" id="edit-sel-submit" class="selector-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialog-footer">
+                <button class="btn-ghost" onclick="closeEditDialog()">取消</button>
+                <button class="btn-primary" onclick="saveSite()">保存配置</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>

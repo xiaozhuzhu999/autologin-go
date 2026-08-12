@@ -1,0 +1,529 @@
+/* ============================================================
+   AutoLogin Pro - Fluent Design CSS
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+body {
+    background: #F3F3F3;
+    color: #1F1F1F;
+    font-size: 13px;
+    overflow-x: hidden;
+}
+
+#app {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 20px;
+}
+
+/* ============================================================
+   视图切换
+   ============================================================ */
+.view {
+    display: none;
+}
+.view.active {
+    display: block;
+}
+
+/* ============================================================
+   Hero 卡片
+   ============================================================ */
+.hero-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-left: 4px solid #0067C0;
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.hero-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1F1F1F;
+}
+.hero-subtitle {
+    font-size: 12px;
+    color: #616161;
+    margin-top: 2px;
+}
+.hero-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* ============================================================
+   按钮
+   ============================================================ */
+.btn-primary {
+    background: #0067C0;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    height: 34px;
+    transition: background 0.15s;
+}
+.btn-primary:hover {
+    background: #005A9E;
+}
+
+.btn-ghost {
+    background: #F5F5F5;
+    color: #242424;
+    border: 1px solid #D1D1D1;
+    border-radius: 6px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    height: 34px;
+    transition: background 0.15s;
+}
+.btn-ghost:hover {
+    background: #EDEDED;
+}
+
+.btn-danger {
+    background: #FFF5F5;
+    color: #C50F1F;
+    border: 1px solid #F3B7BD;
+    border-radius: 6px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    height: 34px;
+    transition: background 0.15s;
+}
+.btn-danger:hover {
+    background: #FDE7E9;
+}
+
+/* ============================================================
+   站点网格
+   ============================================================ */
+.section-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #242424;
+    margin-bottom: 10px;
+}
+
+.site-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.site-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+}
+.site-card:hover {
+    border-color: #8AB4F8;
+    background: #F9FBFD;
+}
+
+.site-card-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.site-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #0067C0;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.site-info {
+    flex: 1;
+    min-width: 0;
+}
+.site-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #242424;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.site-url {
+    font-size: 11px;
+    color: #707070;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   标签
+   ============================================================ */
+.site-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+.tag {
+    color: #005A9E;
+    background: #EAF4FF;
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 500;
+}
+.tag-warn {
+    color: #8A5A00;
+    background: #FFF4CE;
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 500;
+}
+.tag-success {
+    color: #0E6A0E;
+    background: #E9F6EC;
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* ============================================================
+   站点卡片底部
+   ============================================================ */
+.site-card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+.site-last-login {
+    font-size: 11px;
+    color: #707070;
+}
+.site-actions {
+    display: flex;
+    gap: 6px;
+}
+
+/* ============================================================
+   登录进度页
+   ============================================================ */
+.login-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+.login-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1F1F1F;
+}
+
+.login-body {
+    display: flex;
+    gap: 14px;
+}
+
+.steps-panel {
+    flex: 0 0 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.step-item {
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+}
+.step-item.active {
+    background: #F0F6FF;
+    border-color: #0067C0;
+}
+.step-item.done {
+    background: #F3FAF7;
+    border-color: #107C10;
+}
+
+.step-number {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #E5E5E5;
+    color: #616161;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+.step-item.active .step-number {
+    background: #0067C0;
+    color: #FFFFFF;
+}
+.step-item.done .step-number {
+    background: #107C10;
+    color: #FFFFFF;
+}
+
+.step-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #242424;
+}
+
+.step-status {
+    margin-left: auto;
+    font-size: 12px;
+}
+.step-item.active .step-status {
+    color: #0067C0;
+}
+.step-item.done .step-status {
+    color: #107C10;
+}
+
+/* ============================================================
+   日志面板
+   ============================================================ */
+.log-panel {
+    flex: 1;
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+}
+.log-header {
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #242424;
+    border-bottom: 1px solid #E5E5E5;
+    background: #FAFAFA;
+}
+.log-content {
+    flex: 1;
+    background: #111827;
+    color: #D8E5F8;
+    padding: 12px;
+    font-family: "Cascadia Mono", "Consolas", "Courier New", monospace;
+    font-size: 11px;
+    line-height: 1.6;
+    overflow-y: auto;
+}
+.log-line {
+    margin-bottom: 2px;
+}
+.log-line.info { color: #D8E5F8; }
+.log-line.warning { color: #FFD970; }
+.log-line.error { color: #FF6B6B; }
+.log-line.debug { color: #8B9FB8; }
+
+/* ============================================================
+   登录结果
+   ============================================================ */
+.login-result {
+    text-align: center;
+    padding: 30px;
+    margin-top: 20px;
+}
+.result-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+.result-icon.success { color: #107C10; }
+.result-icon.failed { color: #C50F1F; }
+.result-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #242424;
+    margin-bottom: 16px;
+}
+
+/* ============================================================
+   编辑弹窗
+   ============================================================ */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.dialog {
+    background: #F3F3F3;
+    border-radius: 10px;
+    width: 680px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+.dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #E5E5E5;
+}
+.dialog-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F1F1F;
+}
+.dialog-close {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #616161;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.dialog-close:hover {
+    background: #E5E5E5;
+}
+.dialog-body {
+    padding: 16px 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+.dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 20px;
+    border-top: 1px solid #E5E5E5;
+}
+
+/* ============================================================
+   表单
+   ============================================================ */
+.form-panel {
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+}
+.panel-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #242424;
+    margin-bottom: 10px;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 6px;
+}
+.form-field label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #424242;
+}
+.form-field input,
+.form-field select {
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 6px;
+    padding: 7px 10px;
+    color: #242424;
+    font-size: 12px;
+    height: 34px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.form-field input:focus,
+.form-field select:focus {
+    border-color: #0067C0;
+}
+.selector-input {
+    font-family: "Cascadia Mono", "Consolas", monospace !important;
+    font-size: 11px !important;
+}
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: #242424;
+    cursor: pointer;
+}
+.checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #0067C0;
+}
+
+/* ============================================================
+   滚动条
+   ============================================================ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #C8C8C8;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #A8A8A8;
+}

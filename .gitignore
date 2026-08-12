@@ -1,0 +1,28 @@
+# 编译产物
+*.exe
+*.exe~
+
+# 数据库文件（包含敏感账号信息）
+*.db
+
+# 日志文件
+*.log
+
+# 第三方库文件
+lib/
+
+# OCR 模型权重文件
+ddddocr_weights/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# IDE / 编辑器
+.vscode/
+.idea/
+.trae-cn/
+
+# 临时文件
+*.tmp
+*.bak
