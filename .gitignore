@@ -1,4 +1,4 @@
-# 编译产物
+﻿# 编译产物
 *.exe
 *.exe~
 
@@ -8,11 +8,14 @@
 # 日志文件
 *.log
 
-# 第三方库文件
-lib/
+# 大文件 - ONNX Runtime DLL（从 onnxruntime Python 包或 GitHub Releases 获取）
+lib/onnxruntime.dll
 
-# OCR 模型权重文件
-ddddocr_weights/
+# 大文件 - OCR 模型权重（从 ddddocr Python 包获取）
+ddddocr_weights/*.onnx
+
+# Chrome 临时用户数据目录
+autologin-chrome-*
 
 # Python 缓存
 __pycache__/
@@ -22,6 +25,10 @@ __pycache__/
 .vscode/
 .idea/
 .trae-cn/
+
+# OS 文件
+.DS_Store
+Thumbs.db
 
 # 临时文件
 *.tmp
